@@ -1,0 +1,57 @@
+{
+  "name": "kotn-graphics-bundle",
+  "version": "0.0.0",
+  "description": "Graphics for King of the North VI",
+  "author": {
+    "name": "Dan Shields",
+    "email": "d@shieldsuk.me"
+  },
+  "scripts": {
+    "start": "npm run bundle",
+    "postinstall": "npm run build",
+    "bundle": "node script/bundle.js",
+    "build": "set NODE_ENV=production && npm run bundle"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.2.2",
+    "dashboardPanels": [
+      {
+        "name": "hello",
+        "title": "Hello",
+        "width": 2,
+        "file": "clock-ctrl.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "hello.html",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "private": true,
+  "dependencies": {
+    "@typopro/web-bebas-neue": "^3.7.5",
+    "gsap": "^2.0.2",
+    "vue": "^2.5.17",
+    "vue-hot-reload-api": "^2.3.0",
+    "vuetify": "^1.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "parcel-bundler": "^1.9.7",
+    "@vue/component-compiler-utils": "^2.2.0",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

@@ -1,0 +1,7 @@
+/.cache
+/dashboard
+/graphics
+/node_modules
+/shared/lib/vendor
+
+*.log
