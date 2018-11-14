@@ -1,9 +1,10 @@
 <template>
 	<div>
-		<header>Current time</header>
+		<h3>Current Time</h3>
 		<h1>{{time}}</h1>
 		<v-btn @click="toggleTimer" :color="startStopColour">{{startStopContent}}</v-btn>
-		<v-btn @click="setTimer" style="background-color: orange">Set</v-btn>
+		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog">Set to time</v-btn>
+		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog-exact">Set exact duration</v-btn>
 	</div>
 </template>
 
@@ -28,15 +29,10 @@ export default {
 				nodecg.sendMessage('startTimer');
 			}
 		},
-		setTimer() {
-			
-		},
 		listen() {
-			console.log("listening for timer changes");
 			timerRep.on('change', newVal => {
 				this.time = newVal.formatted;
 				this.timerRunning = newVal.running;
-				console.log(newVal);
 			});
 		}
 	},
@@ -50,6 +46,10 @@ export default {
 	}
 };
 
-function pad(num){ return ('000000000' + num).substr(-size);}
 </script>
 
+<style lang="scss" scoped>
+h1 {
+	font-size: 96px;
+}
+</style>

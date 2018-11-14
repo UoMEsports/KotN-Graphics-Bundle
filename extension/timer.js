@@ -7,7 +7,7 @@ module.exports = function (nodecg) {
 	const timer = new NanoTimer();
 	const timerRep = nodecg.Replicant('timer', {
 		defaultValue: (function () {
-			const to = new TimeObject(60);
+			const to = new TimeObject(300);
 			to.running = false;
 			return to;
 		})()
@@ -21,7 +21,8 @@ module.exports = function (nodecg) {
 	nodecg.listenFor('startTimer', start);
 	nodecg.listenFor('stopTimer', stop);
 	nodecg.listenFor('resetTimer', reset);
-	nodecg.listenFor('setTimer', setEnd);
+	nodecg.listenFor('setTimer', setDuration);
+	nodecg.listenFor('setTimerEnd', setEnd);
 
 	/**
 	 * Starts the timer.
@@ -29,6 +30,10 @@ module.exports = function (nodecg) {
 	 */
 	function start() {
 		timer.clearInterval();
+		if (timerRep.value.raw <= 0) {
+			timerRep.value.running = false;
+			return;
+		}
 		timerRep.value.running = true;
 		timer.setInterval(tick, '', '1s');
 	}
@@ -39,7 +44,7 @@ module.exports = function (nodecg) {
 	 */
 	function tick() {
 		TimeObject.decrement(timerRep.value);
-		if (timerRep.value.raw <= 0) {
+		if (timerRep.value.raw < 1) {
 			stop();
 		}
 	}
@@ -62,9 +67,29 @@ module.exports = function (nodecg) {
 		TimeObject.setSeconds(timerRep.value, 0);
 	}
 
+	/**
+	 * Sets the timer to end at a specific timestamp
+	 * @param {number} ts - Unix timestamp at which to end timer
+	 * @returns {undefined}
+	 */
 	function setEnd(ts) {
-		timer.clearInterval();
-		TimeObject.setSeconds(ts - (new Date).getTime());
-		timer.setInterval(tick, '', '1s');
+		const timeDiff = Math.max(ts - ((new Date).getTime() / 1000), 0);
+		if (timeDiff < 1) {
+			stop();
+		}
+
+		TimeObject.setSeconds(timerRep.value, timeDiff);
+	}
+
+	/**
+	 * Sets the timer to end at a specific timestamp
+	 * @param {number} time - Number of seconds to set the timer to
+	 * @returns {undefined}
+	 */
+	function setDuration(time) {
+		if (time < 1) {
+			stop();
+		}
+		TimeObject.setSeconds(timerRep.value, time);
 	}
 }
