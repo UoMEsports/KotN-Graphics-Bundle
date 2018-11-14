@@ -25,19 +25,19 @@
     "compatibleRange": "^1.2.2",
     "dashboardPanels": [
       {
-        "name": "hello",
-        "title": "Hello",
+        "name": "timer",
+        "title": "Timer Control",
         "width": 2,
-        "file": "clock-ctrl.html",
+        "file": "timer-ctrl.html",
         "headerColor": "#525F78",
         "workspace": "Main"
       }
     ],
     "graphics": [
       {
-        "file": "hello.html",
-        "width": 1280,
-        "height": 720
+        "file": "timer.html",
+        "width": 640,
+        "height": 360
       }
     ]
   },
