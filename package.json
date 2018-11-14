@@ -45,6 +45,7 @@
   "dependencies": {
     "@typopro/web-bebas-neue": "^3.7.5",
     "gsap": "^2.0.2",
+    "nanotimer": "^0.3.15",
     "vue": "^2.5.17",
     "vue-hot-reload-api": "^2.3.0",
     "vuetify": "^1.2.3"
