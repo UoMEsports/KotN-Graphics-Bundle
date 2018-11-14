@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1>{{time}}</h1>
+		<h1 v-if="!hidden">{{time}}</h1>
 	</div>
 </template>
 
@@ -10,7 +10,8 @@ const timerRep = nodecg.Replicant('timer');
 export default {
 	data() {
 		return {
-			time: '00:00'
+			time: '00:00',
+			hidden: 'false'
 		};
 	},
 	created() {
@@ -21,6 +22,7 @@ export default {
 			console.log("listening for timer changes");
 			timerRep.on('change', newVal => {
 				this.time = newVal.formatted;
+				this.hidden = newVal.hidden;
 			});
 		}
 	}

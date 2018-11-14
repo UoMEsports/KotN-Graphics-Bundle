@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<h3>Current Time</h3>
 		<h1>{{time}}</h1>
 		<v-btn @click="toggleTimer" :color="startStopColour">{{startStopContent}}</v-btn>
+		<v-btn @click="toggleHidden" :color="showHideColour">{{showHideContent}}</v-btn>
 		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog">Set to time</v-btn>
 		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog-exact">Set exact duration</v-btn>
 	</div>
@@ -15,7 +15,8 @@ export default {
 	data() {
 		return {
 			time: "0:00",
-			timerRunning: false
+			timerRunning: false,
+			hidden: false
 		};
 	},
 	created() {
@@ -29,10 +30,14 @@ export default {
 				nodecg.sendMessage('startTimer');
 			}
 		},
+		toggleHidden() {
+			nodecg.sendMessage('showHideTimer');
+		},
 		listen() {
 			timerRep.on('change', newVal => {
 				this.time = newVal.formatted;
 				this.timerRunning = newVal.running;
+				this.hidden = newVal.hidden;
 			});
 		}
 	},
@@ -42,6 +47,12 @@ export default {
 		},
 		startStopColour() {
 			return this.timerRunning ? 'red' : 'green';
+		},
+		showHideContent() {
+			return this.hidden ? 'SHOW' : 'HIDE';
+		},
+		showHideColour() {
+			return !this.hidden ? 'red' : 'green';
 		}
 	}
 };

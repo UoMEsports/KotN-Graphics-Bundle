@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<number-input v-model="mins" :min="0" :max="60" inline controls></number-input>
-		<number-input v-model="seconds" :step="10" :min="0" :max="59" inline controls></number-input>
+		<number-input v-model="mins" :min="0" :max="60" inline controls rounded></number-input>
+		<number-input v-model="seconds" :min="0" :max="59" inline controls rounded :step="10"></number-input>
 	</div>
 </template>
 
@@ -16,10 +16,6 @@ export default {
       }
 	},
 	created() {
-		document.addEventListener('dialog-opened', () => {
-
-		});
-
 		document.addEventListener('dialog-confirmed', () => {
 			let time = (this.mins * 60) + this.seconds;
 			nodecg.sendMessage('setTimer', time)
