@@ -33,6 +33,14 @@
         "workspace": "Main"
       },
       {
+        "name": "spotlight-ctrl",
+        "title": "Configure Spotlight",
+        "width": 4,
+        "file": "spotlight-ctrl.html",
+        "headerColor": "#525F78",
+        "workspace": "Main"
+      },
+      {
         "name": "timer-dialog",
         "title": "Set Timer",
         "width": 4,
@@ -78,7 +86,7 @@
   "private": true,
   "dependencies": {
     "@chenfengyuan/vue-number-input": "^0.5.2",
-    "@typopro/web-bebas-neue": "^3.7.5",
+    "clone": "^2.1.2",
     "gsap": "^2.0.2",
     "nanotimer": "^0.3.15",
     "vue": "^2.5.17",
