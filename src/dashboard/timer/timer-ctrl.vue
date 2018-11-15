@@ -3,8 +3,8 @@
 		<h1>{{time}}</h1>
 		<v-btn @click="toggleTimer" :color="startStopColour">{{startStopContent}}</v-btn>
 		<v-btn @click="toggleHidden" :color="showHideColour">{{showHideContent}}</v-btn>
-		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog">Set to time</v-btn>
-		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog-exact">Set exact duration</v-btn>
+		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog">Run to</v-btn>
+		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog-exact">Run for</v-btn>
 	</div>
 </template>
 
