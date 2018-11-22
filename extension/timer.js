@@ -10,6 +10,7 @@ module.exports = function (nodecg) {
 			const to = new TimeObject(300);
 			to.running = false;
 			to.hidden = false;
+			to.text = 'UP NEXT';
 			return to;
 		})()
 	});
@@ -25,6 +26,7 @@ module.exports = function (nodecg) {
 	nodecg.listenFor('setTimer', setDuration);
 	nodecg.listenFor('setTimerEnd', setEnd);
 	nodecg.listenFor('showHideTimer', showHide);
+	nodecg.listenFor('setTimerText', setText);
 
 	/**
 	 * Starts the timer.
@@ -97,5 +99,9 @@ module.exports = function (nodecg) {
 
 	function showHide() {
 		timerRep.value.hidden = !timerRep.value.hidden;
+	}
+
+	function setText(text) {
+		timerRep.value.text = text;
 	}
 }

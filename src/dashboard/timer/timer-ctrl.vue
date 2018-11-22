@@ -1,10 +1,18 @@
 <template>
 	<div>
-		<h1>{{time}}</h1>
+		<h1 class="time">{{time}}</h1>
+		<h1 class="text">{{text}}</h1>
 		<v-btn @click="toggleTimer" :color="startStopColour">{{startStopContent}}</v-btn>
 		<v-btn @click="toggleHidden" :color="showHideColour">{{showHideContent}}</v-btn>
-		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog">Run to</v-btn>
-		<v-btn style="background-color: orange" nodecg-dialog="timer-dialog-exact">Run for</v-btn>
+		<v-btn color="orange" nodecg-dialog="timer-dialog">Run to</v-btn>
+		<v-btn color="orange" nodecg-dialog="timer-dialog-exact">Run for</v-btn>
+		
+		<v-text-field
+			label="New Text"
+			v-model="newText"
+			dark
+		></v-text-field>
+		<v-btn @click="setText" color="green">Update Text</v-btn>
 	</div>
 </template>
 
@@ -16,11 +24,13 @@ export default {
 		return {
 			time: "0:00",
 			timerRunning: false,
-			hidden: false
+			hidden: false,
+			text: 'UP NEXT',
+			newText: ''
 		};
 	},
 	created() {
-		NodeCG.waitForReplicants(timerRep).then(this.listen);
+		NodeCG.waitForReplicants(timerRep, ).then(this.listen);
 	},
 	methods: {
 		toggleTimer() {
@@ -33,11 +43,17 @@ export default {
 		toggleHidden() {
 			nodecg.sendMessage('showHideTimer');
 		},
+		setText() {
+			timerRep.value.text = this.newText;
+		},
 		listen() {
+			this.newText = timerRep.value.text;
+
 			timerRep.on('change', newVal => {
 				this.time = newVal.formatted;
 				this.timerRunning = newVal.running;
 				this.hidden = newVal.hidden;
+				this.text = newVal.text;
 			});
 		}
 	},
@@ -60,7 +76,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1 {
+.time {
 	font-size: 96px;
+}
+
+.text {
+	width: 100%;
+	text-align: center;
 }
 </style>

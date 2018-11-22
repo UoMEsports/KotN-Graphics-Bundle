@@ -1,6 +1,8 @@
 <template>
 	<div>
 		<h1 v-if="!hidden">{{time}}</h1>
+		<hr class="line"/>
+		<h1 class="text">{{text}}</h1>
 	</div>
 </template>
 
@@ -12,6 +14,7 @@ export default {
 		return {
 			time: '00:00',
 			hidden: 'false'
+			text: ''
 		};
 	},
 	created() {
@@ -23,6 +26,7 @@ export default {
 			timerRep.on('change', newVal => {
 				this.time = newVal.formatted;
 				this.hidden = newVal.hidden;
+				this.text = String(newVal.text).toUpperCase();
 			});
 		}
 	}
