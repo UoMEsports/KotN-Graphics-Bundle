@@ -33,8 +33,9 @@ export default {
 };
 </script>
 
-<style scoped>
-@import '../../shared/fonts/stylesheet.css';
+<style lang="scss" scoped>
+@import url("https://use.typekit.net/mah1qnl.css");
+@import '../../shared/style/main.scss';
 
 h1 {
 	font-size: 360px;
