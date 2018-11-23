@@ -88,6 +88,12 @@
         "file": "timer.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "lower-third.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": true
       }
     ]
   },
