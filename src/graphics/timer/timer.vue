@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 @import url("https://use.typekit.net/mah1qnl.css");
-@import '../../shared/style/main.scss';
+@import '../../../shared/style/main.scss';
 
 .timer {
 	position: absolute;
@@ -93,7 +93,6 @@ export default {
 	.text {
 		line-height: 1em;
 		font-size: 67px;
-		font-family: futura-pt, sans-serif;
 	}
 }
 
