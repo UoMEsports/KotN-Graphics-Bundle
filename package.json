@@ -26,7 +26,7 @@
     "dashboardPanels": [
       {
         "name": "timer",
-        "title": "Timer Control",
+        "title": "Timer",
         "width": 2,
         "file": "timer-ctrl.html",
         "headerColor": "#525F78",
@@ -34,11 +34,19 @@
       },
       {
         "name": "spotlight-ctrl",
-        "title": "Configure Spotlight",
+        "title": "Spotlight",
         "width": 4,
         "file": "spotlight-ctrl.html",
         "headerColor": "#525F78",
         "workspace": "Main"
+      },
+      {
+        "name": "lower-third-ctrl",
+        "title": "Main Control",
+        "width": 2,
+        "file": "lower-third-ctrl.html",
+        "headerColor": "#525F78",
+        "workspace": "Lower Third"
       },
       {
         "name": "timer-dialog",
@@ -78,8 +86,8 @@
     "graphics": [
       {
         "file": "timer.html",
-        "width": 640,
-        "height": 360
+        "width": 1920,
+        "height": 1080
       }
     ]
   },
