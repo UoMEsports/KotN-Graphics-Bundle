@@ -6,6 +6,7 @@
     "name": "Dan Shields",
     "email": "d@shieldsuk.me"
   },
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "npm run bundle",
     "postinstall": "npm run build",
