@@ -2,7 +2,7 @@
 
 module.exports = function (nodecg) {
 	const NanoTimer = require('nanotimer');
-	const TimeObject = require('../shared/classes/time-object');
+	const TimeObject = require('../shared/lib/vendor/time-object');
 
 	const timer = new NanoTimer();
 	const timerRep = nodecg.Replicant('timer', {
