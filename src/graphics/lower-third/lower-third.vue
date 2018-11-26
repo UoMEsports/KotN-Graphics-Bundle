@@ -1,42 +1,61 @@
 <template>
 	<div class="lower-third">
 		<img ref="logo" class="logo" src="./Logo_no_mask_small.png">
-		<div ref="content" class="content"></div>
+		<div ref="content" class="content">
+			<casters v-if="running=='casters'"/>
+		</div>
 	</div>
 </template>
 
 <script>
-import {TweenMax, TimelineLite, CSSPlugin, Power2, Power4} from "gsap/TweenMax";
+import {TweenMax, TimelineMax, CSSPlugin, Power2, Power4} from "gsap/TweenMax";
+import Casters from './types/Casters.vue';
 
 export default {
 	data() {
 		return {
-			tl: new TimelineLite({paused: true, onReverseComplete: this.tellEnd}),
+			tl: new TimelineMax({paused: true, onReverseComplete: this.finish, onReverseCompleteScope: this}),
 			running: false
 		};
 	},
 	created() {
+		TweenMax.ticker.useRAF(false);
+		TweenMax.ticker.fps(60);
+
+		//this.tl.timeScale(0.1);
+
 		nodecg.listenFor('startLowerThird', type => {
 			this.start(type);
 		});
-		nodecg.listenFor('endLowerThird', this.end);
+		nodecg.listenFor('endLowerThird', this.stop);
 	},
 	mounted() {
-		this.tl.to(this.$refs.logo, 0.5, {'filter': "grayscale(0%)", scale: 1.2, opacity: 1});
+		this.tl.to(this.$refs.logo, 0.8, {'filter': "grayscale(0%)", scale: 1.2, opacity: 1});
 		this.tl.to(this.$refs.content, 1.5, {width: '75%', ease: Power2.easeOut}, '-=0.3');
+
+		nodecg.readReplicant('lowerThirdCurrent', val => {
+			if (val) {
+				this.running = val;
+				this.tl.seek('-=0');
+				this.tl.play();
+			}
+		});
 	},
 	methods: {
 		start(type) {
 			this.running = type;
 			this.tl.play();
 		},
-		end() {
-			this.running = false;
+		stop() {
 			this.tl.reverse();
 		},
-		tellEnd() {
+		finish() {
+			this.running = false;
 			nodecg.sendMessage('finishedLowerThird');
 		}
+	},
+	components: {
+		Casters
 	}
 };
 </script>
@@ -47,7 +66,8 @@ export default {
 
 .lower-third {
 	width: 100%;
-	position: fixed;
+	height: 100%;
+	position: absolute;
 	bottom: 100px;
 }
 
@@ -68,6 +88,12 @@ export default {
 	width: 0;
 	background-color: $background;
 	z-index: -4;
+	overflow: hidden;
+	white-space: nowrap;
+
+	* {
+		margin-left: 100px;
+	}
 }
 
 </style>

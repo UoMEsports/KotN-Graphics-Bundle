@@ -65,6 +65,7 @@ export default {
 		reset() {
 			running.value = false;
 			next.value = false;
+			nodecg.sendMessage('endLowerThird');
 		},
 		ucFirst(string) {
 			return string.charAt(0).toUpperCase() + string.slice(1);
