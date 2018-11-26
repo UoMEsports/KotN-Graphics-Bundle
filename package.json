@@ -58,6 +58,14 @@
         "workspace": "2: Lower Third"
       },
       {
+        "name": "caster-ctrl",
+        "title": "Casters",
+        "width": 3,
+        "file": "caster-ctrl.html",
+        "headerColor": "#525F78",
+        "workspace": "2: Lower Third"
+      },
+      {
         "name": "timer-dialog",
         "title": "Set Timer",
         "width": 4,
