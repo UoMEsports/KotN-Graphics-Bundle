@@ -6,11 +6,11 @@
         <v-layout row wrap>
 			<v-flex xs12>
 				<v-card class="current" :color="runningColour" dark>
-					<h4 class="text">Currently Running:</h4>
+					<h4 class="text">Currently Showing:</h4>
 					<h1 class="text">{{running}}</h1>
 				</v-card>
 			</v-flex>
-			<v-btn v-if="running != 'Nothing'" @click="end" color="red">End {{running}}</v-btn>
+			<v-btn v-if="running != 'Nothing'" @click="end" color="red">Hide {{running}}</v-btn>
 
           	<v-flex xs12>
 				<v-card class="next" dark>
@@ -18,9 +18,9 @@
 					<h1 class="text">{{next}}</h1>
 				</v-card>
 			</v-flex>
-			<v-btn @click="run('casters')" color="green">Run Casters</v-btn>
-			<v-btn @click="run('desk')" color="green">Run Desk</v-btn>
-			<v-btn @click="run('predictions')" color="green">Run Predictions</v-btn>
+			<v-btn @click="run('casters')" color="green">Show Casters</v-btn>
+			<v-btn @click="run('desk')" color="green">Show Desk</v-btn>
+			<v-btn @click="run('predictions')" color="green">Show Predictions</v-btn>
 			<v-btn @click="clearNext" color="yellow">Clear Next</v-btn>
 			<v-btn @click="reset" color="red">Hard Reset</v-btn>
 		</v-layout>

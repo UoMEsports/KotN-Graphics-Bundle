@@ -22,7 +22,7 @@
           </template>
         </v-list>
 
-		<v-list two-line dark>
+		<v-list class="transparent" two-line dark>
           <template v-for="(field, index) in newFields">
             <v-subheader
               v-if="field.header"
@@ -37,7 +37,6 @@
             >
 
               <v-list-tile-content>
-                <!--<v-list-tile-title v-html="field.title"></v-list-tile-title>-->
                 <v-text-field
 					:ref="index"
 					:label="field.title"
@@ -105,5 +104,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.transparent {
+	background-color: rgba(0,0,0,0)
+}
 </style>

@@ -6,7 +6,7 @@
         <v-layout row wrap>
 			<v-flex xs12>
 				<v-card v-if="caster1" class="current" dark>
-					<h4 class="text">Caster 1:</h4>
+					<h4 class="text">Left Caster</h4>
 					<h1 class="text">{{caster1.fullName}}</h1>
 				</v-card>
 			</v-flex>
@@ -20,7 +20,7 @@
 			</v-flex>
           	<v-flex v-if="caster2" xs12>
 				<v-card class="next" dark>
-					<h4 class="text">Caster 2:</h4>
+					<h4 class="text">Right Caster</h4>
 					<h1 class="text">{{caster2.fullName}}</h1>
 				</v-card>
 			</v-flex>
