@@ -30,8 +30,6 @@ module.exports = function (nodecg) {
 
 	function addStaff(obj) {
 		obj.id = staffNextID.value;
-		obj.value = staffNextID.value;
-		obj.text = obj.fullName;
 
 		let newList = clone(staff.value);
 

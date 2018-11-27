@@ -69,17 +69,17 @@ export default {
 				}
 			});
 			caster1.on('change', newVal => {
-				this.caster1 = clone(this.staffList.find(el => el.id == newVal)) || {};
+				this.caster1 = clone(newVal) || {};
 				console.log(JSON.stringify(newVal));
 			});
 			caster2.on('change', newVal => {
-				this.caster2 = clone(this.staffList.find(el => el.id == newVal) || {});
+				this.caster2 = clone(newVal) || {};
 			});
 		},
 		set() {
 			if (this.caster1Select && this.caster2Select) {
-				caster1.value = this.caster1Select.id;
-				caster2.value = this.caster2Select.id;
+				caster1.value = this.caster1Select;
+				caster2.value = this.caster2Select;
 			}
 
 			return;
