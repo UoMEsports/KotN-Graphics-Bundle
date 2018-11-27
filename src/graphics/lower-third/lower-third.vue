@@ -1,6 +1,9 @@
 <template>
 	<div class="lower-third">
 		<img ref="logo" class="logo" src="./Logo_no_mask_small.png">
+		<video ref="loop" class="loop" :height="vidHeight" preload="auto" autoplay loop muted>
+			<source src="../assets/loop.webm" type="video/webm">
+		</video>
 		<div ref="content" class="content">
 			<casters v-if="running=='casters'"/>
 		</div>
@@ -22,16 +25,16 @@ export default {
 		TweenMax.ticker.useRAF(false);
 		TweenMax.ticker.fps(60);
 
-		//this.tl.timeScale(0.1);
-
 		nodecg.listenFor('startLowerThird', type => {
 			this.start(type);
 		});
 		nodecg.listenFor('endLowerThird', this.stop);
 	},
 	mounted() {
-		this.tl.to(this.$refs.logo, 0.8, {'filter': "grayscale(0%)", scale: 1.2, opacity: 1});
-		this.tl.to(this.$refs.content, 1.5, {width: '75%', ease: Power2.easeOut}, '-=0.3');
+		this.tl.to(this.$refs.logo, 0.7, {'filter': "grayscale(0%)", scale: 1.2, opacity: 1});
+		this.tl.to(this.$refs.loop, 0.4, {opacity: 1}, '-=0.6');
+		this.tl.set(this.$refs.content, {opacity: 1}, '-=0.3');
+		this.tl.to(this.$refs.content, 1.5, {width: '1570px', ease: Power2.easeOut});
 
 		nodecg.readReplicant('lowerThirdCurrent', val => {
 			if (val) {
@@ -66,7 +69,7 @@ export default {
 
 .lower-third {
 	width: 100%;
-	height: 100%;
+	height: 40%;
 	position: absolute;
 	bottom: 100px;
 }
@@ -78,6 +81,16 @@ export default {
 	position: absolute;
 	bottom: 0px;
 	left: 100px;
+	z-index: 50;
+}
+
+.loop {
+	opacity: 0;
+	height: 450px;
+	display: block;
+	position: absolute;
+	bottom: -110px;
+	left: 0px;
 }
 
 .content {
@@ -86,10 +99,13 @@ export default {
 	left: 175px;
 	height: 150px;
 	width: 0;
-	background-color: $background;
+	background-color: rgba(0, 0, 0, 0.8);
+	border: 5px solid $primary;
+	border-radius: 15px;
 	z-index: -4;
 	overflow: hidden;
 	white-space: nowrap;
+	opacity: 0;
 
 	* {
 		margin-left: 100px;
