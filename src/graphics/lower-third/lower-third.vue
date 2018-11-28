@@ -1,40 +1,42 @@
 <template>
 	<div class="lower-third">
 		<img ref="logo" class="logo" src="./Logo_no_mask_small.png">
-		<video ref="loop" class="loop" :height="vidHeight" preload="auto" autoplay loop muted>
+		<video ref="loop" class="loop" preload="auto" autoplay loop muted>
 			<source src="../assets/loop.webm" type="video/webm">
 		</video>
 		<div ref="content" class="content">
-			<casters v-if="running=='casters'"/>
+			<template v-if="running == 'casters'">
+				<casters :style="'opacity: ' + contentOpacity"/>
+			</template>
 		</div>
 	</div>
 </template>
 
 <script>
-import {TweenMax, TimelineMax, CSSPlugin, Power2, Power4} from "gsap/TweenMax";
+import {TimelineMax, CSSPlugin, Power2, Power4} from "gsap/TweenMax";
 import Casters from './types/Casters.vue';
 
 export default {
 	data() {
 		return {
 			tl: new TimelineMax({paused: true, onReverseComplete: this.finish, onReverseCompleteScope: this}),
-			running: false
+			running: false,
+			contentOpacity: 0
 		};
 	},
 	created() {
-		TweenMax.ticker.useRAF(false);
-		TweenMax.ticker.fps(60);
-
 		nodecg.listenFor('startLowerThird', type => {
 			this.start(type);
 		});
 		nodecg.listenFor('endLowerThird', this.stop);
 	},
 	mounted() {
+		this.tl.set(this, {contentOpacity: 0})
 		this.tl.to(this.$refs.logo, 0.7, {'filter': "grayscale(0%)", scale: 1.2, opacity: 1});
 		this.tl.to(this.$refs.loop, 0.4, {opacity: 1}, '-=0.6');
 		this.tl.set(this.$refs.content, {opacity: 1}, '-=0.3');
-		this.tl.to(this.$refs.content, 1.5, {width: '1570px', ease: Power2.easeOut});
+		this.tl.to(this.$refs.content, 1.5, {width: '75%', ease: Power2.easeOut});
+		this.tl.to(this, 0.5, {contentOpacity: 1}, '-=0.5')
 
 		nodecg.readReplicant('lowerThirdCurrent', val => {
 			if (val) {
@@ -106,10 +108,7 @@ export default {
 	overflow: hidden;
 	white-space: nowrap;
 	opacity: 0;
-
-	* {
-		margin-left: 100px;
-	}
+	padding-left: 140px;
 }
 
 </style>
