@@ -53,9 +53,9 @@ module.exports = function (nodecg) {
 		const index = newList.findIndex(x => x.id === id);
 
 		// Check id found
-		if (index !== -1) {
-			staff.value = newList.splice(index, index);
-			console.log(staff.value);
+		if (index > -1) {
+			newList.splice(index, 1);
+			staff.value = newList;
 		}
 	}
 };
