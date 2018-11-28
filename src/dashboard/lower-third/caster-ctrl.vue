@@ -5,33 +5,31 @@
       	>
         <v-layout row wrap>
 			<v-flex xs12>
-				<v-card v-if="caster1" class="current" dark>
+				<v-card class="current" dark>
 					<h4 class="text">Left Caster</h4>
 					<h1 class="text">{{caster1.fullName}}</h1>
 				</v-card>
 			</v-flex>
-			<v-flex xs12 sm6 d-flex class="light">
-				<v-select2
-					v-model="caster1Select"
-					:options="staffList"
-					label="fullName"
-					value="id">
-				</v-select2>
+			<v-flex xs12 sm6 d-flex>
+				<select class="dropdown" v-model="caster1Select">
+					<option v-for="staff in staffList" :value="staff.id" :key="staff.id">
+						{{ staff.fullName }}
+					</option>
+				</select>
 			</v-flex>
-          	<v-flex v-if="caster2" xs12>
+          	<v-flex xs12>
 				<v-card class="next" dark>
 					<h4 class="text">Right Caster</h4>
 					<h1 class="text">{{caster2.fullName}}</h1>
 				</v-card>
 			</v-flex>
 
-			<v-flex xs12 sm6 d-flex class="light">
-				<v-select2 
-					v-model="caster2Select"
-					:options="staffList"
-					label="fullName"
-					value="id">
-				</v-select2>
+			<v-flex xs12 sm6 d-flex>
+				<select class="dropdown" v-model="caster2Select">
+					<option v-for="staff in staffList" :value="staff.id" :key="staff.id">
+						{{ staff.fullName }}
+					</option>
+				</select>
 			</v-flex>
 			<v-btn @click="set" color="green">Set</v-btn>
 		</v-layout>
@@ -49,7 +47,6 @@ export default {
 	data() {
 		return {
 			staffList: [],
-			staffList2: ['banter', 'ayy', 'lmao'],
 			caster1: null,
 			caster2: null,
 			caster1Select: null,
@@ -70,7 +67,6 @@ export default {
 			});
 			caster1.on('change', newVal => {
 				this.caster1 = clone(newVal) || {};
-				console.log(JSON.stringify(newVal));
 			});
 			caster2.on('change', newVal => {
 				this.caster2 = clone(newVal) || {};
@@ -78,16 +74,11 @@ export default {
 		},
 		set() {
 			if (this.caster1Select && this.caster2Select) {
-				caster1.value = this.caster1Select;
-				caster2.value = this.caster2Select;
+				caster1.value = this.staffList.find(staff => staff.id == this.caster1Select);
+				caster2.value = this.staffList.find(staff => staff.id == this.caster2Select);
 			}
 
 			return;
-		}
-	},
-	watch: {
-		caster1Select: val => {
-			console.log(val);
 		}
 	}
 };
@@ -95,10 +86,6 @@ export default {
 </script>
 
 <style lang="scss">
-.time {
-	font-size: 96px;
-}
-
 .text {
 	width: 100%;
 	text-align: center;
@@ -106,5 +93,13 @@ export default {
 
 .light {
 	background-color: white;
+}
+
+.dropdown {
+	// the reason I have to do this is why Javascript is shite
+	color: black;
+	-webkit-appearance: menulist;
+	background-color: white;
+	border-style: solid;
 }
 </style>
