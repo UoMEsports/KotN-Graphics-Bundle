@@ -8,6 +8,9 @@
 			<template v-if="running == 'casters'">
 				<casters :style="'opacity: ' + contentOpacity"/>
 			</template>
+			<template v-else-if="running === 'desk'">
+				<desk :style="'opacity: ' + contentOpacity"/>
+			</template>
 		</div>
 	</div>
 </template>
@@ -15,6 +18,7 @@
 <script>
 import {TimelineMax, CSSPlugin, Power2, Power4} from "gsap/TweenMax";
 import Casters from './types/Casters.vue';
+import Desk from './types/Desk.vue';
 
 export default {
 	data() {
@@ -50,6 +54,8 @@ export default {
 		start(type) {
 			this.running = type;
 			this.tl.play();
+
+			console.log(this.running);
 		},
 		stop() {
 			this.tl.reverse();
@@ -60,7 +66,8 @@ export default {
 		}
 	},
 	components: {
-		Casters
+		Casters,
+		Desk,
 	}
 };
 </script>
