@@ -66,6 +66,14 @@
         "workspace": "2: Lower Third"
       },
       {
+        "name": "desk-ctrl",
+        "title": "Desk",
+        "width": 3,
+        "file": "desk-ctrl.html",
+        "headerColor": "#525F78",
+        "workspace": "2: Lower Third"
+      },
+      {
         "name": "timer-dialog",
         "title": "Set Timer",
         "width": 4,
