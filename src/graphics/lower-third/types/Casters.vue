@@ -1,22 +1,16 @@
 <template>
 	<div class="casters">
-		<ul class="list">
-			<li>
-				<div class="caster1 staff">
-					<h1 class="name">{{caster1.fullName}}</h1>
-					<h1 v-if="caster1.social" class="social">@{{caster1.social}}</h1>
-				</div>
-			</li>
-			<li>
-				<div class="divider"></div>
-			</li>
-			<li>
-				<div class="caster2 staff">
-					<h1 class="name">{{caster2.fullName}}</h1>
-					<h1 v-if="caster2.social" class="social">@{{caster2.social}}</h1>
-				</div>
-			</li>
-		</ul>
+		<div class="caster1 staff">
+			<h1 class="name">{{caster1.fullName}}</h1>
+			<h1 v-if="caster1.social" class="social">@{{caster1.social}}</h1>
+		</div>
+		
+		<div class="divider"></div>
+
+		<div class="caster2 staff">
+			<h1 class="name">{{caster2.fullName}}</h1>
+			<h1 v-if="caster2.social" class="social">@{{caster2.social}}</h1>
+		</div>
 	</div>
 </template>
 
@@ -59,34 +53,38 @@ export default {
 }
 
 .casters {
-	width: 1470px;
+	width: 100%;
 	height: 100%;
-}
 
-.list {
-	list-style: none;
-	text-align: center;
-	padding: 0;
-
-	li {
+	.staff {
 		display: inline-block;
+		width: 48%;
+		height: 100%;
 
-		.staff {
-			width: 650px;
-			white-space: normal;
-			word-wrap:break-word;
-			.name {
-				margin: 0;
-				font-size: 48px;
-				top: 5px;
-			}
+		position: absolute;
+		top: 0;
+
+		white-space: normal;
+		word-wrap:break-word;
+		text-align: center;
+
+		&.caster2 {
+			right: 0;
 		}
+
+		.name {
+			margin: 0;
+			font-size: 48px;
+			top: 5px;
+		}
+	}
+
+	.divider {
+		height: 120px;
+		border-left: 1px solid white;
+		display: inline-block;
 	}
 }
 
-.divider {
-	height: 120px;
-	border-left: 1px solid white;
-}
 </style>
 
