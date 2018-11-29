@@ -95,9 +95,14 @@ export default {
 		}
 	}
 
-	.divider {
-		height: 120px;
-		border-left: 1px solid white;
+	.divider-container {
+		height: 150px;
+
+		.divider {
+			margin-top: 13px;
+			height: 120px;
+			border-left: 1px solid white;
+		}
 	}
 }
 
