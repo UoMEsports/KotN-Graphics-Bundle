@@ -39,7 +39,7 @@ export default {
 		this.tl.to(this.$refs.logo, 0.7, {'filter': "grayscale(0%)", scale: 1.2, opacity: 1});
 		this.tl.to(this.$refs.loop, 0.4, {opacity: 1}, '-=0.6');
 		this.tl.set(this.$refs.content, {opacity: 1}, '-=0.3');
-		this.tl.to(this.$refs.content, 1.5, {width: '75%', ease: Power2.easeOut});
+		this.tl.to(this.$refs.content, 1.5, {width: '1580px', ease: Power2.easeOut});
 		this.tl.to(this, 0.5, {contentOpacity: 1}, '-=0.5')
 
 		nodecg.readReplicant('lowerThirdCurrent', val => {
@@ -115,7 +115,6 @@ export default {
 	overflow: hidden;
 	white-space: nowrap;
 	opacity: 0;
-	padding-left: 140px;
 }
 
 </style>

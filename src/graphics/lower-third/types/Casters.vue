@@ -56,6 +56,7 @@ export default {
 
 .casters {
 	width: 1440px;
+	margin-left: 140px;
 	display: flex;
 
 	justify-content: space-evenly;
