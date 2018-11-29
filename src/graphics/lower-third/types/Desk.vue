@@ -1,18 +1,25 @@
 <template>
 	<div class="desk">
-		<div class="host staff">
-			<h1 class="name">{{host.fullName}}</h1>
-			<h1 v-if="host.social" class="social">@{{host.social}}</h1>
+		<div class="staff">
+			<h1 class="name">{{guest1.realName}}</h1>
+			<h1 class="alias">{{guest1.alias}}</h1>
+			<h2 v-if="guest1.social" class="social">@{{guest1.social}}</h2>
 		</div>
+
 		<div class="divider"></div>
-		<div class="guest1 staff">
-			<h1 class="name">{{guest1.fullName}}</h1>
-			<h1 v-if="guest1.social" class="social">@{{guest1.social}}</h1>
+
+		<div class="staff">
+			<h1 class="name">{{guest2.realName}}</h1>
+			<h1 class="alias">{{guest2.alias}}</h1>
+			<h2 v-if="guest2.social" class="social">@{{guest2.social}}</h2>
 		</div>
+
 		<div class="divider"></div>
-		<div class="guest2 staff">
-			<h1 class="name">{{guest2.fullName}}</h1>
-			<h1 v-if="guest2.social" class="social">@{{guest2.social}}</h1>
+
+		<div class="staff">
+			<h1 class="name">{{host.realName}}</h1>
+			<h1 class="alias">{{host.alias}}</h1>
+			<h2 v-if="host.social" class="social">@{{host.social}}</h2>
 		</div>
 	</div>
 </template>
@@ -61,34 +68,33 @@ export default {
 }
 
 .desk {
-	width: 1470px;
-	height: 100%;
-}
+	width: 1440px;
+	display: flex;
 
-.list {
-	list-style: none;
-	text-align: center;
-	padding: 0;
+	justify-content:space-evenly;
+	align-items: center;
 
-	li {
-		display: inline-block;
+	.staff {
+		white-space: normal;
+		word-wrap:break-word;
+		text-align: center;
+		flex-basis: 33%;
 
-		.staff {
-			width: 433px;
-			white-space: normal;
-			word-wrap:break-word;
-			.name {
-				margin: 0;
-				font-size: 36px;
-				top: 5px;
-			}
+		.name {
+			margin: 0;
+			font-size: 48px;
 		}
+
+		.alias, .social {
+			margin: 0;
+		}
+	}
+
+	.divider {
+		height: 120px;
+		border-left: 1px solid white;
 	}
 }
 
-.divider {
-	height: 120px;
-	border-left: 1px solid white;
-}
 </style>
 

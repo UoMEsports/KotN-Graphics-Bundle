@@ -1,15 +1,17 @@
 <template>
 	<div class="casters">
-		<div class="caster1 staff">
-			<h1 class="name">{{caster1.fullName}}</h1>
-			<h1 v-if="caster1.social" class="social">@{{caster1.social}}</h1>
+		<div class="staff">
+			<h1 class="name">{{caster1.realName}}</h1>
+			<h1 class="alias">{{caster1.alias}}</h1>
+			<h2 v-if="caster1.social" class="social">@{{caster1.social}}</h2>
 		</div>
 		
 		<div class="divider"></div>
 
-		<div class="caster2 staff">
-			<h1 class="name">{{caster2.fullName}}</h1>
-			<h1 v-if="caster2.social" class="social">@{{caster2.social}}</h1>
+		<div class="staff">
+			<h1 class="name">{{caster2.realName}}</h1>
+			<h1 class="alias">{{caster2.alias}}</h1>
+			<h2 v-if="caster2.social" class="social">@{{caster2.social}}</h2>
 		</div>
 	</div>
 </template>
@@ -53,36 +55,31 @@ export default {
 }
 
 .casters {
-	width: 100%;
-	height: 100%;
+	width: 1440px;
+	display: flex;
+
+	justify-content: space-evenly;
+	align-items: center;
 
 	.staff {
-		display: inline-block;
-		width: 48%;
-		height: 100%;
-
-		position: absolute;
-		top: 0;
-
 		white-space: normal;
 		word-wrap:break-word;
 		text-align: center;
-
-		&.caster2 {
-			right: 0;
-		}
+		flex-basis: 50%;
 
 		.name {
 			margin: 0;
 			font-size: 48px;
-			top: 5px;
+		}
+
+		.alias, .social {
+			margin: 0;
 		}
 	}
 
 	.divider {
 		height: 120px;
 		border-left: 1px solid white;
-		display: inline-block;
 	}
 }
 
