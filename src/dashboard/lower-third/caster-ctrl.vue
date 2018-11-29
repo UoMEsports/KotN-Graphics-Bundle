@@ -62,7 +62,15 @@ export default {
 				if (!Array.isArray(newVal)) {
 					this.staffList = [];
 				} else {
-					this.staffList = clone(newVal);
+					let newList = clone(newVal);
+					
+					// sort by value
+					newList.sort(function(a, b) {
+						return a.realName.localeCompare(b.realName);
+					});
+
+					this.staffList = newList;
+
 				}
 			});
 			caster1.on('change', newVal => {
