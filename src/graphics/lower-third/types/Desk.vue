@@ -1,25 +1,29 @@
 <template>
 	<div class="desk">
 		<div class="staff">
-			<h1 class="name">{{guest1.realName}}</h1>
-			<h1 class="alias">{{guest1.alias}}</h1>
-			<h2 v-if="guest1.social" class="social">@{{guest1.social}}</h2>
+			<h1 v-if="guest1" class="name">{{guest1.realName}}</h1>
+			<h1 v-if="guest1 && guest1.alias" class="alias">{{guest1.alias}}</h1>
+			<h2 v-if="guest1 && guest1.social"  class="social">@{{guest1.social}}</h2>
 		</div>
 
-		<div class="divider"></div>
-
-		<div class="staff">
-			<h1 class="name">{{guest2.realName}}</h1>
-			<h1 class="alias">{{guest2.alias}}</h1>
-			<h2 v-if="guest2.social" class="social">@{{guest2.social}}</h2>
+		<div class="divider-container">
+			<div class="divider"></div>
 		</div>
 
-		<div class="divider"></div>
+		<div class="staff">
+			<h1 v-if="guest2"  class="name">{{guest2.realName}}</h1>
+			<h1 v-if="guest2 && guest2.alias" class="alias">{{guest2.alias}}</h1>
+			<h2 v-if="guest2 && guest2.social" class="social">@{{guest2.social}}</h2>
+		</div>
+
+		<div class="divider-container">
+			<div class="divider"></div>
+		</div>
 
 		<div class="staff">
-			<h1 class="name">{{host.realName}}</h1>
-			<h1 class="alias">{{host.alias}}</h1>
-			<h2 v-if="host.social" class="social">@{{host.social}}</h2>
+			<h1 v-if="host" class="name">{{host.realName}}</h1>
+			<h1 v-if="host && host.alias" class="alias">{{host.alias}}</h1>
+			<h2 v-if="host && host.social" class="social">@{{host.social}}</h2>
 		</div>
 	</div>
 </template>

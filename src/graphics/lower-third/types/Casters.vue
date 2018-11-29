@@ -1,17 +1,19 @@
 <template>
 	<div class="casters">
 		<div class="staff">
-			<h1 class="name">{{caster1.realName}}</h1>
-			<h1 class="alias">{{caster1.alias}}</h1>
-			<h2 v-if="caster1.social" class="social">@{{caster1.social}}</h2>
+			<h1 v-if="caster1" class="name">{{caster1.realName}}</h1>
+			<h1 v-if="caster1 && caster1.alias" class="alias">{{caster1.alias}}</h1>
+			<h2 v-if="caster1 && caster1.social" class="social">@{{caster1.social}}</h2>
 		</div>
-		
-		<div class="divider"></div>
+
+		<div class="divider-container">
+			<div class="divider"></div>
+		</div>
 
 		<div class="staff">
-			<h1 class="name">{{caster2.realName}}</h1>
-			<h1 class="alias">{{caster2.alias}}</h1>
-			<h2 v-if="caster2.social" class="social">@{{caster2.social}}</h2>
+			<h1 v-if="caster2" class="name">{{caster2.realName}}</h1>
+			<h1 v-if="caster2 && caster2.alias" class="alias">{{caster2.alias}}</h1>
+			<h2 v-if="caster2 && caster2.social" class="social">@{{caster2.social}}</h2>
 		</div>
 	</div>
 </template>

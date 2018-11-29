@@ -61,6 +61,7 @@ export default {
 			this.tl.reverse();
 		},
 		finish() {
+			this.tl.pause();
 			this.running = false;
 			nodecg.sendMessage('finishedLowerThird');
 		}
