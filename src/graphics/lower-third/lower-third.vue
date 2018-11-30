@@ -11,6 +11,7 @@
 			<template v-else-if="running === 'desk'">
 				<desk :style="'opacity: ' + contentOpacity"/>
 			</template>
+			<predictions v-else-if="running == 'predictions'" :style="'opacity: ' + contentOpacity"/>
 		</div>
 	</div>
 </template>
@@ -19,6 +20,7 @@
 import {TimelineMax, CSSPlugin, Power2, Power4} from "gsap/TweenMax";
 import Casters from './types/Casters.vue';
 import Desk from './types/Desk.vue';
+import Predictions from './types/Predictions.vue';
 
 export default {
 	data() {
@@ -69,6 +71,7 @@ export default {
 	components: {
 		Casters,
 		Desk,
+		Predictions,
 	}
 };
 </script>
