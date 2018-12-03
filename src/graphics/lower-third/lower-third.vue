@@ -14,6 +14,9 @@
 			<template v-else-if="running === 'host'">
 				<host :style="'opacity: ' + contentOpacity"/>
 			</template>			
+			<template v-else-if="running === 'analysts'">
+				<analysts :style="'opacity: ' + contentOpacity"/>
+			</template>			
 			<!--<generic v-else-if="running == 'generic'" :style="'opacity: ' + contentOpacity"/>-->
 		</div>
 	</div>
@@ -25,6 +28,7 @@ import Casters from './types/Casters.vue';
 import Desk from './types/Desk.vue';
 import Predictions from './types/Predictions.vue';
 import Host from './types/Host.vue';
+import Analysts from './types/Analysts.vue';
 import Generic from './types/Generic.vue';
 
 export default {
@@ -78,7 +82,8 @@ export default {
 		Desk,
 		Predictions,
 		Generic,
-		Host
+		Host,
+		Analysts
 	}
 };
 </script>

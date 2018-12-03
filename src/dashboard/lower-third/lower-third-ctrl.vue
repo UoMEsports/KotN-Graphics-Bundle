@@ -20,8 +20,9 @@
 			</v-flex>
 			<v-btn @click="run('casters')" color="green">Show Casters</v-btn>
 			<v-btn @click="run('host')" color="green">Show Host</v-btn>
-			<v-btn @click="run('desk')" color="green">Show Analysts</v-btn>
-			<v-btn @click="run('predictions')" color="green">Show Predictions</v-btn>
+			<v-btn @click="run('analysts')" color="green">Show Analysts</v-btn>
+			<v-btn @click="run('desk')" color="green">Show Full Desk</v-btn>
+			<!--<v-btn @click="run('predictions')" color="green">Show Predictions</v-btn>-->
 			<v-btn @click="clearNext" color="yellow">Clear Next</v-btn>
 			<v-btn @click="reset" color="red">Hard Reset</v-btn>
 		</v-layout>
