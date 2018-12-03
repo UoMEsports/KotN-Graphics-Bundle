@@ -16,7 +16,9 @@
 
 <template>
 	<div>
+		<h2>Minutes</h2>
 		<number-input v-model="mins" :min="0" :max="60" inline controls rounded></number-input>
+		<h2>Seconds</h2>
 		<number-input v-model="seconds" :min="0" :max="59" inline controls rounded :step="10"></number-input>
 	</div>
 </template>
