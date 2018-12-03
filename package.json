@@ -34,14 +34,6 @@
         "workspace": "1: Main"
       },
       {
-        "name": "spotlight-ctrl",
-        "title": "Spotlight",
-        "width": 4,
-        "file": "spotlight-ctrl.html",
-        "headerColor": "#525F78",
-        "workspace": "3: Spotlight"
-      },
-      {
         "name": "lower-third-ctrl",
         "title": "Main Control",
         "width": 2,
