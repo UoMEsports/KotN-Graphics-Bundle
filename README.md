@@ -15,7 +15,7 @@ Only two graphics were ready in time for the event, the lower third and the time
 #### Dashboard
 ![lower third dashboard](https://raw.githubusercontent.com/UoMEsports/kotn-graphics-bundle/master/media/lower_third_dashboard.png)
 #### Graphic
-![lower third graphic](https://raw.githubusercontent.com/UoMEsports/kotn-graphics-bundle/master/media/lower_third_graphic.png)
+![lower third graphic](https://thumbs.gfycat.com/PositiveAncientGermanwirehairedpointer-size_restricted.gif)
 
 ## Setup
 
