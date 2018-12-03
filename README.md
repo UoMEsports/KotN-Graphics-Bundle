@@ -19,7 +19,6 @@ Only two graphics were ready in time for the event, the lower third and the time
 
 ## Setup
 
-Once that's done, and you've got NodeCG setup do:
 1. [Install NodeCG](https://nodecg.com/tutorial-3_quick-start.html)
 2. `git clone https://github.com/UoMEsports/kotn-graphics-bundle.git <nodecg_install_directory>/bundles/kotn-graphics-bundle`
 3. `npm install`
