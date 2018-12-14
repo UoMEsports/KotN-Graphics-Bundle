@@ -46,7 +46,7 @@ export default {
 		};
 	},
 	created() {
-		NodeCG.waitForReplicants(timerRep, ).then(this.listen);
+		NodeCG.waitForReplicants(timerRep).then(this.listen);
 	},
 	methods: {
 		toggleTimer() {
