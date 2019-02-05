@@ -69,6 +69,8 @@ export default {
 		this.tl.to(this.$refs.content, 1.5, {width: '1580px', ease: Power2.easeOut});
 		this.tl.to(this, 0.5, {contentOpacity: 1}, '-=0.5')
 
+		// Skip transition if we should already be running
+		// Useful if graphic needs to be reloaded etc.
 		nodecg.readReplicant('lowerThirdCurrent', val => {
 			if (val) {
 				this.running = val;
